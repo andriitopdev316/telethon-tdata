@@ -1,0 +1,6 @@
+env
+*cache*
+*.session
+*tdata*
+sessions
+test.py
