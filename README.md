@@ -28,12 +28,14 @@ That’s it — no need to nest folders by hand.
 | **Add tdata folders…** | Pick a Desktop `tdata` folder (or a parent that contains `tdata`) |
 | **Load from sessions/** | Queue everything already in `sessions/` |
 | **Load from tdatas/** | Queue everything already in `tdatas/` |
-| **Open sessions / tdatas** | Open those folders in Explorer |
+| **Convert** | Run the queue; progress bar shows item-by-item status |
+
+After a successful run you can open the output folder from the prompt.
 
 Output:
 
 - Session → tdata → `tdatas/tdataNAME/`
-- tdata → Session → `sessions/NAME/NAME.session`
+- tdata → Session → `sessions/NAME/NAME.session` **and** `sessions/NAME/NAME.json`
 
 ---
 
@@ -75,6 +77,12 @@ Copy-Item "vendor\tgcrypto\__init__.py" "$site\tgcrypto\__init__.py" -Force
 > Native `TgCrypto` is skipped on purpose (needs MSVC). This project uses `vendor/tgcrypto`.
 
 ---
+
+## Notes
+
+- Session → tdata needs a **logged-in** `.session` (not revoked).
+- tdata → Session needs a **full** Desktop `tdata` (`key_datas` + account folder). Quit Telegram Desktop before copying. Local passcode must be off (or conversion cannot decrypt).
+- Modern Telegram Desktop tdata is supported via `vendor/opentele_compat.py` (stock opentele alone fails with “No account has been loaded”).
 
 ## Requirements
 
